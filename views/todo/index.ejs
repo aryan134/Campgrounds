@@ -1,0 +1,43 @@
+        
+            <% include ../partials/header %>
+   
+    
+            <!-- input form -->
+            <div class="container">
+                <row>
+                    <h1 class="text-center">Todo Items</h1>
+                    <form class="col-6 mx-auto text-center" action="/todos" method="POST">
+                      <div id="todosnew" class="input-group">
+                        <input id="todos" type="text" class="form-control" name="name" placeholder="Enter todo Item"><span> 
+                        <button type="submit" class="btn btn-primary">Add Todo</button>
+</span>
+                    </div>
+                    </form>
+                </row>
+                <!-- unordered list (ul) -->
+            </div>
+      <div class="container">
+              <div class="row">
+                    <ul class="col-6 mx-auto " id="todos">
+                               <% todoList.forEach(function(todo) { %>
+                                     <%    if(todo.author.id.equals(currentUser._id)) { %>
+                                                   <li> <%= todo.name %> 
+                                                    <form class="delete" id="delete-form" action="/todos/<%=todo._id%>?_method=DELETE" method="POST" >
+                               <input type="submit" value="delete" class="btn btn-xs btn-danger">
+                           </form>
+                                                   </li>
+                                                   
+                                    <% } %>
+
+                        <% }); %>
+
+                    
+              
+           
+                    </ul>
+
+                </div>
+            </div>
+
+            <% include ../partials/footer %>
+            

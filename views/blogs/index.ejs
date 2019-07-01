@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+
+ 
+
+<div class="container">
+      <header class="jumbotron">
+          <div class="container">
+              <h1>Welcome to blogs page!!</h1>
+                        <p class="btn btn-info btn-large"> <a href="/blogs/new">add new</a></p
+
+          </div>
+          
+      </header>
+  
+    <div class="container">
+         
+    <% blog.forEach(function(blog){ %>
+     
+          <div class="container" >
+            <div class="row">
+              <div class="blog-post">
+                  <h2 class="blog-post-title"><%=blog.title%></h2>
+                  <p class="blog-post-meta">
+                      Submitted by <%=blog.author.username%>
+                  </p>
+                  <h4>
+                      <%=blog.content%>
+                  </h4>
+                   <%  if(currentUser && blog.author.id.equals(currentUser._id)){  %>
+
+                        <form id="delete-form" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST" >
+                               <input type="submit" value="delete" class="btn btn-xs btn-danger">
+                           </form>
+                      <%}%>
+              </div>
+          </div>
+      </div>
+      
+    <% }); %>
+        
+    </div>
+ 
+  
+    </div> 
+
+
+<%include ../partials/footer %>
