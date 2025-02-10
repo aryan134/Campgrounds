@@ -34,6 +34,7 @@ app.use(require("express-session")({
     secret: "Raj is confused",
     resave: false,
     saveUninitialized: false
+    
 }));
 
 app.use(passport.initialize());
